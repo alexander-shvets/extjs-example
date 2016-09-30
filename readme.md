@@ -3,7 +3,7 @@ Alphabet ExtJS application
 
 ### Demo
 
-Please use last versions of Crome, Safari or Firefox (that supported ES6).
+Please use last versions of Crome, Safari or Firefox (that supported ES6).    
 https://alexander-shvets.github.io/extjs-example/src/
 
 ### Task
