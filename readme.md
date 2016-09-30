@@ -1,6 +1,11 @@
 Alphabet ExtJS application
 --------------------------
 
+### Demo
+
+Please use last versions of Crome, Safari or Firefox (that supported ES6).
+https://alexander-shvets.github.io/extjs-example/src/
+
 ### Task
 
 We would like to ask you to create SPA (Single Page Application) using ExtJS framework version 4.2.x.
