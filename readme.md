@@ -1,5 +1,5 @@
-Alphabet application
---------------------
+Alphabet ExtJS application
+--------------------------
 
 ### Task
 
@@ -17,8 +17,8 @@ Application must provide an ability to add/delete missing letters into the tree/
 
 The grid would have two columns:
 
-    1. Checkbox selection column, with multiselect allowed
-    2. "English letter" column, presenting an English alphabet letter.
+1. Checkbox selection column, with multiselect allowed.
+2. "English letter" column, presenting an English alphabet letter.
 
 The grid footer should contain a toolbar with two buttons: “Add” and “Delete”.
 “Add” button click should open a dialog window proposing to select/enter a letter to be added. The dialog window should contain validation. The letter would be inserted into the grid preserving grid sort order. “Add” button should be disabled if another letter addition is not possible. “Delete” button deletes selected letters from the grid.
@@ -38,7 +38,8 @@ __Review__
 
 __Updates__
 
-In order to fix some usability issues, I've updated UI:    
+In order to fix some usability issues, I've updated UI:
+
 1. Add Letter form moved to toolbar, instead of creating modal dialog with this form each time. Now users can add many letters, just by pressing Add button again and again.
 2. Added "Move to Grid/Tree ->" tooltips when start dragging a letter.
 
