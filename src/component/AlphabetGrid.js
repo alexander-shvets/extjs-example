@@ -22,7 +22,6 @@ Ext.define('component.AlphabetGrid', {
             {
                 itemId: 'del',
                 text: 'Delete',
-                disabled: true,
                 handler: this.removeSelection, scope: this
             },
         ]
@@ -110,11 +109,10 @@ Ext.define('component.AlphabetGrid', {
             toolbar.queryById('add').setDisabled( disable )
         }
 
-        this.getSelectionModel().on('selectionchange', (_, selection) => {
-            const disable = selection.length == 0
-            toolbar.queryById('del').setDisabled( disable )
-            menu.queryById('del').setDisabled( disable )
-        })
+        this.getSelectionModel().on('selectionchange', (_, selection) =>
+            toolbar.queryById('del').setDisabled( selection.length == 0 )
+        )
+        toolbar.queryById('del').disable()
 
     },
 
