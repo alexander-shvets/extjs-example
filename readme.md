@@ -3,7 +3,7 @@ Alphabet ExtJS application
 
 ### Demo
 
-https://alexander-shvets.github.io/extjs-example/src/
+https://alexander-shvets.github.io/extjs-example/dist/
 
 ### Task
 
