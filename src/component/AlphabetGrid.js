@@ -111,6 +111,7 @@ Ext.define('component.AlphabetGrid', {
 
     },
 
+    /** @public */
     removeSelection(confirm = true){
         const selection = this.view.getSelectionModel().getSelection()
         if( selection.length ){
@@ -129,6 +130,7 @@ Ext.define('component.AlphabetGrid', {
         }
     },
 
+    /** @public */
     setData( records ){
         this.store.loadData( records )
     },

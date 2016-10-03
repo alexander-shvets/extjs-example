@@ -12,6 +12,7 @@ Ext.define('store.Alphabet', {
         this.loadRawData( objects )
     },
 
+    /** @public */
     popAll(){
         const allRecords = this.getRange()
         this.removeAll()

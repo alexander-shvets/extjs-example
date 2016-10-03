@@ -15,6 +15,7 @@ Ext.define('component.AlphabetTree', {
     },
     displayField: 'letter',
 
+    /** @public */
     setData( records ){
         this.store.getRootNode().appendChild( records )
     },
