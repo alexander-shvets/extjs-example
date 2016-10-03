@@ -1,5 +1,3 @@
-'use strict';
-
 Ext.define('model.Letter', {
     extend: 'Ext.data.Model',
     // validations: [

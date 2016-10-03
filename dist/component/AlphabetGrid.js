@@ -1,5 +1,3 @@
-'use strict';
-
 Ext.define('component.AlphabetGrid', {
     extend: 'Ext.grid.Panel',
     requires: ['store.Alphabet'],

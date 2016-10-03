@@ -1,5 +1,3 @@
-'use strict';
-
 Ext.define('store.Alphabet', {
     extend: 'Ext.data.Store',
     model: 'model.Letter',

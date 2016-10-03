@@ -1,5 +1,3 @@
-'use strict';
-
 Ext.define('component.AlphabetTree', {
     extend: 'Ext.tree.Panel',
 
