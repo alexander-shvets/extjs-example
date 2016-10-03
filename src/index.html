@@ -11,10 +11,12 @@
         Ext.application({
             name: 'Alphabet',
             requires: ['container.Alphabet'],
-            launch: ()=> Ext.widget('ALPHABET', {
-                renderTo: document.body,
-                padding: 100
-            })
+            launch: function(){
+                Ext.widget('ALPHABET', {
+                    renderTo: document.body,
+                    padding: 100
+                })
+            }
         })
     </script>
 </head>
