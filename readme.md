@@ -3,7 +3,7 @@ Alphabet ExtJS ES6 application
 
 ### Demo
 
-Application https://alexander-shvets.github.io/extjs-example/dist/
+Application https://alexander-shvets.github.io/extjs-example/dist/    
 API Docs https://alexander-shvets.github.io/extjs-example/apidocs/
 
 ### Task
