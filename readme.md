@@ -1,5 +1,5 @@
-Alphabet ExtJS application
---------------------------
+Alphabet ExtJS ES6 application
+------------------------------
 
 ### Demo
 
