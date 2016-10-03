@@ -3,8 +3,7 @@ Alphabet ExtJS application
 
 ### Demo
 
-Please use last versions of Crome, Safari or Firefox (that supported ES6).    
-https://alexander-shvets.github.io/extjs-example/src/
+https://alexander-shvets.github.io/extjs-example/dist/
 
 ### Task
 
@@ -50,4 +49,9 @@ In order to fix some usability issues, I've updated UI:
 
 #### Technical note
 
-Wrote in ES6 version of JavaScript, [supported by all major browsers](http://caniuse.com/#search=es6), tested in Chrome. Can be easily transpiled to ES3/ES5 by babel/webpack.
+Wrote in ES6 version of JavaScript (used object notation, arrows and const/let), [supported by all major browsers](http://caniuse.com/#search=es6), tested in Chrome.
+
+Can be easily transpiled to ES3/ES5 by babel/webpack:
+
+    npm install
+    npm run build
