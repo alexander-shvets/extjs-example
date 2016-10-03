@@ -19,54 +19,60 @@ Ext.define('container.Alphabet', {
 
     initComponent(){
         const availableLetters = new store.Alphabet
+
+        const dragNDropConfig = {
+            tree: {
+                plugins: {
+                    ptype: 'treeviewdragdrop',
+                    dragGroup: 'ab-tree-items',
+                    dropGroup: 'ab-grid-items',
+                    dragText: 'Move to the Grid &rBarr;',
+                    sortOnDrop: true,
+                },
+                listeners: {
+                    drop(){ grid.removeSelection(false) }
+                },
+            },
+            grid: {
+                plugins: {
+                    ptype: 'gridviewdragdrop',
+                    dragGroup: 'ab-grid-items',
+                    dropGroup: 'ab-tree-items',
+                    dragText: 'Move to the Tree &lBarr;',
+                },
+                listeners: {
+                    drop(_, data){
+                        this.store.sort()
+                        //remove from tree store:
+                        data.records.map( record => record.remove() )
+                    }
+                },
+            },
+        }
+
         this.items = [
             {xtype: 'ALPHABET-TREE',
                 itemId: 'tree',
                 region: 'west',
                 width: '35%',
                 split: true,
-                viewConfig: {
-                    plugins: {
-                        ptype: 'treeviewdragdrop',
-                        dragGroup: 'ab-tree-items',
-                        dropGroup: 'ab-grid-items',
-                        dragText: 'Move to the Grid &rBarr;',
-                        sortOnDrop: true,
-                    },
-                },
+                viewConfig: dragNDropConfig.tree,
             },
             {xtype: 'ALPHABET-GRID',
                 itemId: 'grid',
                 region: 'center',
                 availableLettersStore: availableLetters,
-                viewConfig: {
-                    plugins: {
-                        ptype: 'gridviewdragdrop',
-                        dragGroup: 'ab-grid-items',
-                        dropGroup: 'ab-tree-items',
-                        dragText: 'Move to the Tree &lBarr;',
-                    },
-                    listeners: {
-                        drop(){ this.store.sort() }
-                    }
-                },
+                viewConfig: dragNDropConfig.grid,
             },
         ]
 
         this.callParent()
 
-        const records = availableLetters.popAll()
         const grid = this.queryById('grid')
         const tree = this.queryById('tree')
+        const records = availableLetters.popAll()
 
         tree.setData( records.slice(0, this.treeSize ) )
         grid.setData( records.slice( this.treeSize ) )
-
-        // Drag'n'Drop
-        grid.view.on('drop', (_, data)=>
-            //remove from tree store:
-            data.records.map( record => record.remove() )
-        )
-        tree.view.on('drop', ()=> grid.removeSelection(false) )
     },
 })
