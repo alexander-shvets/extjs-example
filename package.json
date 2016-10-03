@@ -4,8 +4,9 @@
   "description": "Alphabet ExtJS ES6 application",
   "main": "src/index.html",
   "scripts": {
-    "build": "rm -rf dist; mkdir dist && cp src/index.html dist && npm run transpile-js",
-    "transpile-js": "babel src --out-dir dist --presets es2015-nostrict --source-maps"
+    "build": "rm -rf dist; mkdir dist && cp src/index.html dist && npm run transpiler",
+    "transpiler": "babel src --out-dir dist --presets es2015-nostrict --source-maps",
+    "apidocs": "jsduck dist --output apidocs --title='Alphabet App'"
   },
   "repository": {
     "type": "git",

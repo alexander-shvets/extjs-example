@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='component-AlphabetGrid'>/** */
+</span>Ext.define(&#39;component.AlphabetGrid&#39;, {
+    extend: &#39;Ext.grid.Panel&#39;,
+    requires: [&#39;store.Alphabet&#39;],
+
+    alias: &#39;widget.ALPHABET-GRID&#39;,
+
+<span id='component-AlphabetGrid-cfg-availableLettersStore'>    /** @cfg {store.Alphabet} */
+</span>    availableLettersStore: null,
+
+<span id='component-AlphabetGrid-property-store'>    store: {
+</span>        model: &#39;model.Letter&#39;,
+        sorters: [{ property: &#39;letter&#39; }],
+        proxy: &#39;memory&#39;
+    },
+<span id='component-AlphabetGrid-property-columns'>    columns: [{ text: &#39;English letter&#39;, dataIndex: &#39;letter&#39;, flex: 1 }],
+</span><span id='component-AlphabetGrid-property-selType'>    selType: &#39;checkboxmodel&#39;,
+</span>
+<span id='component-AlphabetGrid-method-getContextActions'>    getContextActions: function getContextActions() {
+</span>        return [{
+            itemId: &#39;del&#39;,
+            text: &#39;Delete&#39;,
+            handler: this.removeSelection, scope: this
+        }];
+    },
+<span id='component-AlphabetGrid-method-initComponent'>    initComponent: function initComponent() {
+</span>        this.callParent();
+        this.initStores();
+        this.initToolbar();
+    },
+<span id='component-AlphabetGrid-method-initStores'>    initStores: function initStores() {
+</span>        var _this = this;
+
+        if (!this.availableLettersStore) {
+            this.availableLettersStore = new store.Alphabet();
+            console.warn(&quot;availableLettersStore not set at initComponent&quot;);
+        }
+        this.store.on({
+            add: function add(_, records) {
+                var removeFromAvailableLetters = function removeFromAvailableLetters(record) {
+                    var letter = record.get(&#39;letter&#39;);
+                    var found = _this.availableLettersStore.find(&#39;letter&#39;, letter);
+                    if (found &gt;= 0) _this.availableLettersStore.removeAt(found);
+                };
+                records.forEach(removeFromAvailableLetters);
+            },
+            remove: function remove(_, record) {
+                return _this.availableLettersStore.add(record);
+            }
+        });
+    },
+<span id='component-AlphabetGrid-method-initToolbar'>    initToolbar: function initToolbar() {
+</span>        var _this2 = this;
+
+        var toolbar = this.addDocked({
+            xtype: &#39;toolbar&#39;,
+            dock: &#39;bottom&#39;,
+            items: [{ xtype: &#39;combo&#39;,
+                itemId: &#39;input&#39;,
+                store: this.availableLettersStore,
+                displayField: &#39;letter&#39;,
+                queryMode: &#39;local&#39;,
+                vtype: &#39;alpha&#39;,
+                allowBlank: false,
+                maxLength: 1,
+                validateOnBlur: false,
+                editable: false,
+                autoSelect: true,
+                disabled: true,
+                width: 40
+            }, {
+                itemId: &#39;add&#39;,
+                text: &#39;Add&#39;,
+                disabled: true,
+                handler: function handler() {
+                    var input = _this2.queryById(&#39;input&#39;);
+                    var letter = input.getValue();
+                    if (input.isValid()) {
+                        _this2.store.addSorted(new model.Letter({ letter: letter }));
+                        input.select(input.store.first());
+                    }
+                }
+            }].concat(this.getContextActions())
+        })[0];
+
+        var menu = new Ext.menu.Menu({
+            items: this.getContextActions()
+        });
+        this.on(&#39;itemcontextmenu&#39;, function (_, __, ___, ____, event) {
+            event.stopEvent();
+            menu.showAt(event.xy);
+        });
+
+        this.availableLettersStore.on({
+            add: updateAddDisability,
+            remove: updateAddDisability
+        });
+        function updateAddDisability() {
+            var disable = this.count() == 0;
+            toolbar.queryById(&#39;input&#39;).setDisabled(disable);
+            toolbar.queryById(&#39;add&#39;).setDisabled(disable);
+        }
+
+        this.getSelectionModel().on(&#39;selectionchange&#39;, function (_, selection) {
+            return toolbar.queryById(&#39;del&#39;).setDisabled(selection.length == 0);
+        });
+        toolbar.queryById(&#39;del&#39;).disable();
+    },
+
+
+<span id='component-AlphabetGrid-method-removeSelection'>    /** */
+</span>    removeSelection: function removeSelection() {
+        var _this3 = this;
+
+        var confirm = arguments.length &gt; 0 &amp;&amp; arguments[0] !== undefined ? arguments[0] : true;
+
+        var selection = this.view.getSelectionModel().getSelection();
+        if (selection.length) {
+            (function () {
+                var remove = function remove() {
+                    return _this3.store.remove(selection);
+                };
+                if (confirm) {
+                    Ext.Msg.confirm(&#39;Delete letter(s)&#39;, &#39;Do you really want to delete &#39; + selection.length + &#39; selected letter(s)?&#39;, function (ifPressed) {
+                        return ifPressed == &#39;yes&#39; &amp;&amp; remove();
+                    });
+                } else {
+                    _this3.store.suspendEvent(&#39;remove&#39;);
+                    remove();
+                    _this3.store.resumeEvent(&#39;remove&#39;);
+                }
+            })();
+        }
+    },
+
+
+<span id='component-AlphabetGrid-method-setData'>    /** @param {model.Letter[]} records */
+</span>    setData: function setData(records) {
+        this.store.loadData(records);
+    }
+});
+//# sourceMappingURL=AlphabetGrid.js.map</pre>
+</body>
+</html>

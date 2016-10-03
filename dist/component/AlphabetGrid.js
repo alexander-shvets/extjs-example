@@ -1,3 +1,4 @@
+/** */
 Ext.define('component.AlphabetGrid', {
     extend: 'Ext.grid.Panel',
     requires: ['store.Alphabet'],
@@ -107,7 +108,7 @@ Ext.define('component.AlphabetGrid', {
     },
 
 
-    /** @public */
+    /** */
     removeSelection: function removeSelection() {
         var _this3 = this;
 
@@ -133,7 +134,7 @@ Ext.define('component.AlphabetGrid', {
     },
 
 
-    /** @public */
+    /** @param {model.Letter[]} records */
     setData: function setData(records) {
         this.store.loadData(records);
     }

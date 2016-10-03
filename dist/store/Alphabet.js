@@ -1,8 +1,10 @@
+/** */
 Ext.define('store.Alphabet', {
     extend: 'Ext.data.Store',
     model: 'model.Letter',
     proxy: 'memory',
 
+    /** */
     letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
 
     constructor: function constructor() {
@@ -14,7 +16,7 @@ Ext.define('store.Alphabet', {
     },
 
 
-    /** @public */
+    /** */
     popAll: function popAll() {
         var allRecords = this.getRange();
         this.removeAll();

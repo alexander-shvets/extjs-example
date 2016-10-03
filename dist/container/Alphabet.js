@@ -8,7 +8,7 @@ Ext.define('container.Alphabet', {
 
     alias: 'widget.ALPHABET',
 
-    /** @cfg number of tree items (1 - 26) */
+    /** @cfg {number} treeSize number of tree items (1 - 26) */
     treeSize: 10,
 
     layout: 'border',

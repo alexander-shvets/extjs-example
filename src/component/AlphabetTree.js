@@ -1,3 +1,4 @@
+/** */
 Ext.define('component.AlphabetTree', {
     extend: 'Ext.tree.Panel',
 
@@ -15,7 +16,7 @@ Ext.define('component.AlphabetTree', {
     },
     displayField: 'letter',
 
-    /** @public */
+    /** @param {model.Letter[]} records */
     setData( records ){
         this.store.getRootNode().appendChild( records )
     },

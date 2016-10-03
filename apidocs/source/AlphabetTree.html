@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='component-AlphabetTree'>/** */
+</span>Ext.define(&#39;component.AlphabetTree&#39;, {
+    extend: &#39;Ext.tree.Panel&#39;,
+
+    alias: &#39;widget.ALPHABET-TREE&#39;,
+
+<span id='component-AlphabetTree-property-store'>    store: {
+</span>        model: &#39;model.Letter&#39;,
+        sorters: [{ property: &#39;letter&#39; }],
+        root: {
+            letter: &#39;English Alphabet&#39;,
+            expanded: true,
+            leaf: false
+        },
+        proxy: &#39;memory&#39;
+    },
+<span id='component-AlphabetTree-property-displayField'>    displayField: &#39;letter&#39;,
+</span>
+<span id='component-AlphabetTree-method-setData'>    /** @param {model.Letter[]} records */
+</span>    setData: function setData(records) {
+        this.store.getRootNode().appendChild(records);
+    }
+});
+//# sourceMappingURL=AlphabetTree.js.map</pre>
+</body>
+</html>

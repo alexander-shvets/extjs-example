@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='store-Alphabet'>/** */
+</span>Ext.define(&#39;store.Alphabet&#39;, {
+    extend: &#39;Ext.data.Store&#39;,
+<span id='store-Alphabet-property-model'>    model: &#39;model.Letter&#39;,
+</span><span id='store-Alphabet-property-proxy'>    proxy: &#39;memory&#39;,
+</span>
+<span id='store-Alphabet-property-letters'>    /** */
+</span>    letters: &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;,
+
+<span id='store-Alphabet-method-constructor'>    constructor: function constructor() {
+</span>        this.callParent();
+        var objects = this.letters.split(&#39;&#39;).map(function (letter) {
+            return { letter: letter };
+        });
+        this.loadRawData(objects);
+    },
+
+
+<span id='store-Alphabet-method-popAll'>    /** */
+</span>    popAll: function popAll() {
+        var allRecords = this.getRange();
+        this.removeAll();
+        return allRecords;
+    }
+});
+//# sourceMappingURL=Alphabet.js.map</pre>
+</body>
+</html>
