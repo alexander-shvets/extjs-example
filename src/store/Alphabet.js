@@ -17,10 +17,4 @@ Ext.define('store.Alphabet', {
         this.removeAll()
         return allRecords
     },
-
-    //TODO: get rid from this override — prevent combo box to load store on first expand
-    load(opts){
-        if(opts && opts.callback)
-            opts.callback.apply(this, arguments)
-    },
 })

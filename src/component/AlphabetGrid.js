@@ -66,6 +66,7 @@ Ext.define('component.AlphabetGrid', {
                     allowBlank: false,
                     autoSelect: true,
                     disabled: true,
+                    queryMode: 'local',
 
                     editable: false,
                     validateOnBlur: false,
