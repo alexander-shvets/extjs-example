@@ -25,7 +25,74 @@
   <div id="loading"><span class="title">Alphabet App</span><span class="logo"></span></div>
 
   <div id="header-content">Alphabet App</div>
-  
+  <div id='welcome-content' style='display:none'><div class="markdown"><h2>Alphabet ExtJS ES6 application</h2>
+
+<h3>Demo</h3>
+
+<p>Application https://alexander-shvets.github.io/extjs-example/dist/  <br/>
+API Docs https://alexander-shvets.github.io/extjs-example/apidocs/</p>
+
+<h3>Task</h3>
+
+<p>We would like to ask you to create SPA (Single Page Application) using ExtJS framework version 4.2.x.</p>
+
+<p>Page layout contains 2 parts: left and right. By default the left part should take 35% of horizontal viewport size. Page layout should be adaptive and grow/shrink when a viewport size changes. The left part should contain a tree and the right should contain a grid (Ext.grid.Panel).</p>
+
+<p>The tree should contain a root node named "English alphabet" and 10 children each named after the first 10 English alphabet letters (A, B, C, D, E, F, G, H, I, J) sorted ascending.</p>
+
+<p>The grid should contain the rest of the letters (16 rows). Each row should have exactly one english letter in an "English letter" column starting from letter "K" and to the end of the alphabet sorted descending.</p>
+
+<p>Make the tree and the grid support drag'n'drop of letters from the grid to the tree and back from the tree to the grid.</p>
+
+<p>Application must provide an ability to add/delete missing letters into the tree/grid.</p>
+
+<p>The grid would have two columns:</p>
+
+<ol>
+<li>Checkbox selection column, with multiselect allowed.</li>
+<li>"English letter" column, presenting an English alphabet letter.</li>
+</ol>
+
+
+<p>The grid footer should contain a toolbar with two buttons: “Add” and “Delete”.
+“Add” button click should open a dialog window proposing to select/enter a letter to be added. The dialog window should contain validation. The letter would be inserted into the grid preserving grid sort order. “Add” button should be disabled if another letter addition is not possible. “Delete” button deletes selected letters from the grid.</p>
+
+<p>The tree should have context menu with two items: “Add”, “Delete”, doing the same actions as the grid corresponding buttons.</p>
+
+<h3>Release notes</h3>
+
+<h4>UI/UX</h4>
+
+<p><strong>Review</strong></p>
+
+<ol>
+<li>Adding many (about 10) letters to list isn't usable. User need to do a lot of repetitive actions.</li>
+<li>Moving letters from grid into a tree and back realized only through the drag'n'drop, it is desirable to duplicate this functionality more obvious way, for example through the toolbar and context menu.</li>
+<li>There is no way to delete / add letters into the Tree directly (only through the grid and drag'n'drop).</li>
+<li>Modal windows is not in the trend now :)</li>
+</ol>
+
+
+<p><strong>Updates</strong></p>
+
+<p>In order to fix some usability issues, I've updated UI:</p>
+
+<ol>
+<li>Add Letter form moved to toolbar, instead of creating modal dialog with this form each time. Now users can add many letters, just by pressing Add button again and again.</li>
+<li>Added "Move to Grid/Tree ->" tooltips when start dragging a letter.</li>
+</ol>
+
+
+<h4>Technical note</h4>
+
+<p>Wrote in ES6 version of JavaScript (used object notation, arrows and const/let), <a href="http://caniuse.com/#search=es6">supported by all major browsers</a>, tested in Chrome.</p>
+
+<p>Can be easily transpiled to ES5 by babel:</p>
+
+<pre><code>npm install
+npm run build
+</code></pre>
+</div></div>
             <div id='categories-content' style='display:none'>
             <div class='section'>
 <h1>component</h1>
@@ -65,7 +132,7 @@
 
   
   
-  <div id='footer-content' style='display: none'>Generated on Tue 04 Oct 2016 01:00:33 by <a href='https://github.com/senchalabs/jsduck'>JSDuck</a> 5.3.4.</div>
+  <div id='footer-content' style='display: none'>Generated on Tue 04 Oct 2016 01:16:14 by <a href='https://github.com/senchalabs/jsduck'>JSDuck</a> 5.3.4.</div>
 
   
 

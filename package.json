@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rm -rf dist; mkdir dist && cp src/index.html dist && npm run transpiler",
     "transpiler": "babel src --out-dir dist --presets es2015-nostrict --source-maps",
-    "apidocs": "jsduck dist --output apidocs --title='Alphabet App'"
+    "apidocs": "jsduck dist --output apidocs --title='Alphabet App' --welcome=readme.md"
   },
   "repository": {
     "type": "git",
