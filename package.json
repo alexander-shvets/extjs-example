@@ -4,9 +4,10 @@
   "description": "Alphabet ExtJS ES6 application",
   "main": "src/index.html",
   "scripts": {
-    "build": "rm -rf dist/; mkdir dist/ && cp src/index.html dist/ && npm run transpiler",
-    "transpiler": "babel src --out-dir dist/ --presets es2015-nostrict --source-maps",
-    "apidocs": "jsduck dist/ --output apidocs/ --external=Ext.* --title='Alphabet API Docs' --welcome=readme.md"
+    "postinstall": "which jsduck || sudo gem install jsduck; npm run build",
+    "prebuild": "rm -rf dist/; mkdir dist/ && cp src/index.html dist/",
+    "build": "babel src/ --out-dir dist/ --presets es2015-nostrict --source-maps",
+    "postbuild": "jsduck dist/ --output apidocs/ --external=Ext.* --title='Alphabet API Docs' --welcome=readme.md"
   },
   "repository": {
     "type": "git",
