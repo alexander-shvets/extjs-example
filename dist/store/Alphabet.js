@@ -7,6 +7,7 @@ Ext.define('store.Alphabet', {
     /** */
     letters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
 
+    /** @ignore */
     constructor: function constructor() {
         this.callParent();
         var objects = this.letters.split('').map(function (letter) {
@@ -16,7 +17,7 @@ Ext.define('store.Alphabet', {
     },
 
 
-    /** */
+    /** get and remove all records */
     popAll: function popAll() {
         var allRecords = this.getRange();
         this.removeAll();

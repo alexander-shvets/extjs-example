@@ -112,7 +112,7 @@ Ext.define('component.AlphabetGrid', {
 
     },
 
-    /** */
+    /** @param {boolean} confirm=true */
     removeSelection(confirm = true){
         const selection = this.view.getSelectionModel().getSelection()
         if( selection.length ){

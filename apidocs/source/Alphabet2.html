@@ -24,8 +24,9 @@
 <span id='store-Alphabet-property-letters'>    /** */
 </span>    letters: &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;,
 
-<span id='store-Alphabet-method-constructor'>    constructor: function constructor() {
-</span>        this.callParent();
+<span id='global-method-constructor'>    /** @ignore */
+</span>    constructor: function constructor() {
+        this.callParent();
         var objects = this.letters.split(&#39;&#39;).map(function (letter) {
             return { letter: letter };
         });
@@ -33,7 +34,7 @@
     },
 
 
-<span id='store-Alphabet-method-popAll'>    /** */
+<span id='store-Alphabet-method-popAll'>    /** get and remove all records */
 </span>    popAll: function popAll() {
         var allRecords = this.getRange();
         this.removeAll();

@@ -108,7 +108,7 @@ Ext.define('component.AlphabetGrid', {
     },
 
 
-    /** */
+    /** @param {boolean} confirm=true */
     removeSelection: function removeSelection() {
         var _this3 = this;
 
