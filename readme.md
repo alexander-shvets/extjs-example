@@ -3,8 +3,8 @@ Alphabet ExtJS ES6 application
 
 ### Demo
 
-Application https://visuart.github.io/extjs-example/dist/    
-API Docs https://visuart.github.io/extjs-example/apidocs/#!/api
+Application https://alexander-shvets.github.io/extjs-example/dist/    
+API Docs https://alexander-shvets.github.io/extjs-example/apidocs/#!/api
 
 ### Task
 
